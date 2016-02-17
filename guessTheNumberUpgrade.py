@@ -1,4 +1,4 @@
-# replace the contents of this comment with your name
+# Charles Dunlow
 import random
 
 # -------------------------------------------------------------------
@@ -7,6 +7,8 @@ import random
 #   'topLimit' which is the top limit for the random number generator
 # the function returns the random number generated to its caller
 def generateNumber( topLimit ):
+    secretNumber = random.randint(1,topLimit)
+    return secretNumber
     
     # TO DO: ####################################################
     # Write code in this function that calculates and           #
@@ -55,6 +57,14 @@ def evaluateAnswer( userGuess, userSecretNumber ):
     # 3. If the user guess and secret number are the same,      #
     #    return True, no message prints to the screen           #
     #############################################################
+    if userGuess < userSecretNumber:
+        print("Your guess is too low.")
+        return False
+    elif userGuess > userSecretNumber:
+        print("Your guess is too high.")
+        return False
+    elif userGuess == userSecretNumber:
+        return True
 
 # end of evaluateAnswer function -------------------------------------
 
@@ -66,6 +76,15 @@ def evaluateAnswer( userGuess, userSecretNumber ):
 #       True, we'll show the right answer on the screen
 #       False, we won't show the right answer on the screen
 def playGame( showAnswer ):
+    print("Hello, what is your name?")
+    name = input()
+
+    print("Well," + name + ", what is the largest number you would like to guess?")
+    topLimit = int(input())
+    print("Please choose the total number of guesses available.")
+    totalGuesses = int(input())
+    theNumber = generateNumber(topLimit)
+    print("Pick a number between 1 and " + str(topLimit) + " and you have " + str(totalGuesses) + " guesses") 
     
     # TO DO: ####################################################
     # Write code in this function that                          #
@@ -98,3 +117,4 @@ def playGame( showAnswer ):
     else:
         print('Nope. The number I was thinking of was ' + str(theNumber))
 # end of playGame function -----------------------------------------
+
